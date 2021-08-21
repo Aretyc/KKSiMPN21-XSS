@@ -4,6 +4,6 @@ services:
     web:
         image: php:8-apache
         volumes: 
-            - ./web:/var/www/html:rw
+            - ./www:/var/www/html:rw
         ports: 
             - 8000:80
