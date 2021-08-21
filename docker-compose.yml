@@ -1,0 +1,9 @@
+version: "3"
+
+services:
+    web:
+        image: php:8-apache
+        volumes: 
+            - ./web:/var/www/html:rw
+        ports: 
+            - 8000:80
