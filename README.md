@@ -1,1 +1,1 @@
-# -KKSiMPN21-XSS
+# kod źródłowy do artykułu 
