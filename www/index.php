@@ -10,7 +10,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 <body>
-    <form class="container" action="#" method="post" >
+    <form class="container mt-5" action="#" method="post" >
         <h3>Nowy komentarz</h3>
         <input type="text"  class="form-control" id="coment" name="comment" >
         <button  type="submit" class="btn btn-primary my-3">Dodaj</button>
