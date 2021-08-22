@@ -1,3 +1,4 @@
+<?php include './addComment.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,37 +11,16 @@
 </head>
 <body>
     <form class="container" action="#" method="post" >
-        <p>Nowy komentarz</p>
-        <input type="text"  class="form-control" id="coment" >
+        <h3>Nowy komentarz</h3>
+        <input type="text"  class="form-control" id="coment" name="comment" >
         <button  type="submit" class="btn btn-primary my-3">Dodaj</button>
     </form>
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12"><h3>komentarze</h3></div>
+        </div>
+        <?php include './getComment.php'?>
+    </div>
 
-    <?php 
-        $servername = "db";
-        $username = "root";
-        $password = "admin";
-        $dbname = "xss";
-        
-    
-        $conn = new mysqli($servername, $username, $password, $dbname);
-        if ($conn->connect_error) {
-        die("Connection failed: " . $conn->connect_error);
-        }
-        
-        $sql = "SELECT comment FROM comments";
-        $result = $conn->query($sql);
-        
-        if ($result->num_rows > 0) {
-    
-        while($row = $result->fetch_assoc()) {
-            echo  $row["comment"];
-        }
-        } else {
-        echo "0 results";
-        }
-        $conn->close();
-    
-    
-    ?>
 </body>
 </html>
