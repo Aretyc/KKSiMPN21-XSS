@@ -1,4 +1,5 @@
 
+<?php  include './addImage.php' ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,10 +11,11 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 </head>
 <body>
-    <form class="container mt-5" action="#" method="post" enctype="multipart/form-data" >
+    <form class="container mt-5" action="addImage.php" method="post" enctype="multipart/form-data" >
         <h3>Nowy obraz</h3>
-        <input type="file" class="form-control" id="inputGroupFile01">
+        <input type="file" class="form-control" id="userImage" name="userImage">
         <button  type="submit" class="btn btn-primary my-3">Dodaj</button>
+        <input type="submit" value="Upload Image" name="submit">
     </form>
     <div class="container mt-5">
         <div class="row">
