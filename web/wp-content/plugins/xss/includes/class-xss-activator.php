@@ -36,6 +36,7 @@ class Xss_Activator {
 		$sql = "CREATE TABLE `wp_xss_message` (
 			`id` int(11) NOT NULL AUTO_INCREMENT,
 			`name` text NOT NULL,
+			`email` text NOT NULL,
 			`message` text NOT NULL,
 			PRIMARY KEY (`id`)
 		  )  $charset_collate;";
