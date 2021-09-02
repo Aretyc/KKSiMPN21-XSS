@@ -131,7 +131,7 @@ class Xss_Admin {
 
 ?>
 		
-			<table class="table table-striped">
+			<table class="table table-striped mt-5">
 				<thead class="thead-dark">
 					<tr>
 						<th>Id</th>
@@ -147,8 +147,8 @@ class Xss_Admin {
 						<tr>
 							<td><?php echo $row->id;?></td>
 							<td><?php echo $row->name;?></td>
-							<td><?php echo $row->message;?></td>
 							<td><?php echo $row->email;?></td>
+							<td><?php echo $row->message;?></td>
 						<tr>
 					<?php } ?>
 				</tbody>
