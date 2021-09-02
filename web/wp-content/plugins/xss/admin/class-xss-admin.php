@@ -100,4 +100,33 @@ class Xss_Admin {
 
 	}
 
+	function xss_setup_menu(){
+		add_menu_page(
+			'Messages',
+			'Messages',
+			'administrator',
+			'messages',
+			array( $this,'xss_admin_options')
+		);
+		// add_submenu_page(
+		// 	'messages',
+		// 	'Sittings',
+		// 	'Ustawienia',
+		// 	'administrator',
+		// 	'mailing-sittings',
+		// 	array($this,'sittings')
+		// );
+
+	}
+	function xss_admin_options(){
+		echo "asdas";
+	}
+
+	function sittings(){
+		// check user capabilities
+		if ( ! current_user_can( 'administrator' ) ) {
+			return;
+		}
+	}
+
 }
