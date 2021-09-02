@@ -119,7 +119,39 @@ class Xss_Admin {
 
 	}
 	function xss_admin_options(){
-		echo "asdas";
+		global $wpdb;
+		$results = $wpdb->get_results( "SELECT * FROM {$wpdb->prefix}xss_message ");
+		
+
+?>
+		
+			<table class="table table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<th>Id</th>
+						<th>Imię</th>
+						<th>Email</th>
+						<th>Wiadomość</th>
+						
+						
+					</tr>
+				</thead>
+				<tbody>	
+					<?php  foreach($results as $row){?>
+						<tr>
+							<td><?php echo $row->id;?></td>
+							<td><?php echo $row->name;?></td>
+							<td><?php echo $row->message;?></td>
+							<td><?php echo $row->email;?></td>
+						<tr>
+					<?php } ?>
+				</tbody>
+		</table>
+		
+		
+		
+<?php
+
 	}
 
 	function sittings(){
