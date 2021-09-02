@@ -74,7 +74,10 @@ class Xss_Admin {
 		 */
 
 		wp_enqueue_style( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'css/xss-admin.css', array(), $this->version, 'all' );
-
+		global $pagenow;
+		if (( $pagenow === 'admin.php' ) && ($_GET['page'] === 'messages')) {
+			wp_enqueue_style( $this->plugin_name."_bootstrap", "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css",array(), $this->version, 'all' );
+		} 
 	}
 
 	/**
@@ -97,7 +100,10 @@ class Xss_Admin {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/xss-admin.js', array( 'jquery' ), $this->version, false );
-
+		global $pagenow;
+		if (( $pagenow === 'admin.php' ) && ($_GET['page'] === 'messages')) {
+			wp_enqueue_script( $this->plugin_name."_bootstrap", "https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js",array(),  $this->version, false );
+		} 
 	}
 
 	function xss_setup_menu(){
