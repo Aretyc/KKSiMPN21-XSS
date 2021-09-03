@@ -36,6 +36,9 @@ services:
       depends_on: 
           - db
 
-# volumes:
-#   wordpress:./
-#   db:./
+  atacker:
+      image: php:8-apache
+      volumes: 
+          - ./atacker_serwer:/var/www/html:rw
+      ports: 
+          - 8082:80
