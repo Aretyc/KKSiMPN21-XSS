@@ -117,7 +117,30 @@ class Xss_Public {
 
 	public function xss_send_message()
 	{	
+		
+		$data = array(
+			'name'=>$_POST["ms_name"],
+			'email'=>$_POST["ms_email"],
+			'message' => $_POST["ms_content"]
+		);
+		
+		$this->insert_data_to_database($data);
 		echo "Wiadomość została wysłana";
   		die();
+	}
+
+
+	private function insert_data_to_database($data){
+
+
+		global $wpdb;
+		$wpdb->insert(
+			"{$wpdb->prefix}xss_message",
+			array(
+				'name'=>$data["name"],
+				'email'=>$data["email"],
+				'message' => $data["message"]
+			)
+		);
 	}
 }
