@@ -106,8 +106,8 @@ class Xss_Public {
 	public function xss_form_shortcode( $atts = [], $content = null) {
 	?>
     <form  id="xss-form"  class="d-flex flex-column" action="" method="post">
-        <input class="form-control mt-2" type="text" placeholder="Imie">
-        <input class="form-control mt-2"   type="mail" placeholder="Email">
+        <input class="form-control mt-2" name="ms_name" type="text" placeholder="Imie">
+        <input class="form-control mt-2" name="ms_email"  type="mail" placeholder="Email">
         <textarea class="form-control mt-2" name="ms_content" id="" placeholder="Wiadomość"  ></textarea>
         <button class="btn btn-primary mt-2">Wyślij</button>
     </form>
@@ -116,7 +116,7 @@ class Xss_Public {
 	}
 
 	public function xss_send_message()
-	{
+	{	
 		echo "Wiadomość została wysłana";
   		die();
 	}
