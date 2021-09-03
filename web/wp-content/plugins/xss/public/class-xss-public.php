@@ -97,7 +97,27 @@ class Xss_Public {
 		 */
 
 		wp_enqueue_script( $this->plugin_name, plugin_dir_url( __FILE__ ) . 'js/xss-public.js', array( 'jquery' ), $this->version, false );
+		
+		wp_localize_script( $this->plugin_name, 'settings', array(
+			'ajaxurl'    => admin_url( 'admin-ajax.php' ),
+			'send_label' => __( 'Send report', 'reportabug' )
+		) );
+	}
+	public function xss_form_shortcode( $atts = [], $content = null) {
+	?>
+    <form  id="xss-form"  class="d-flex flex-column" action="" method="post">
+        <input class="form-control mt-2" type="text" placeholder="Imie">
+        <input class="form-control mt-2"   type="mail" placeholder="Email">
+        <textarea class="form-control mt-2" name="ms_content" id="" placeholder="Wiadomość"  ></textarea>
+        <button class="btn btn-primary mt-2">Wyślij</button>
+    </form>
 
+	<?php	
 	}
 
+	public function xss_send_message()
+	{
+		echo "Wiadomość została wysłana";
+  		die();
+	}
 }

@@ -157,6 +157,9 @@ class Xss {
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_styles' );
 		$this->loader->add_action( 'admin_enqueue_scripts', $plugin_admin, 'enqueue_scripts' );
 		$this->loader->add_action('admin_menu',$plugin_admin,'xss_setup_menu');
+	
+	
+
 	}
 
 	/**
@@ -172,6 +175,14 @@ class Xss {
 
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_styles' );
 		$this->loader->add_action( 'wp_enqueue_scripts', $plugin_public, 'enqueue_scripts' );
+		
+		
+		$this->loader->add_action( 'wp_ajax_xss_send_message', $plugin_public, 'xss_send_message' );
+		$this->loader->add_action( 'wp_ajax_nopriv_xss_send_message', $plugin_public, 'xss_send_message' );
+		
+		add_shortcode('xss_form_shortcode', array( $plugin_public,'xss_form_shortcode') );
+
+		
 
 	}
 

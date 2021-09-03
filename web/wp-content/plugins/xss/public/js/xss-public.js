@@ -1,4 +1,4 @@
-(function( $ ) {
+(function ($) {
 	'use strict';
 
 	/**
@@ -29,4 +29,24 @@
 	 * practising this, we should strive to set a better example in our own work.
 	 */
 
-})( jQuery );
+
+	$(window).load(function () {
+		let form = document.getElementById('xss-form');
+		form.addEventListener("submit", (e) => {
+			e.preventDefault();
+
+
+			let formData = new FormData(e.target);
+			formData.append('action', 'xss_send_message');
+
+			fetch(settings.ajaxurl, {
+				method: 'POST',
+				body: formData,
+			}).then(response => response.text())
+				.then(data => alert(data));
+		});
+	})
+
+
+
+})(jQuery);
