@@ -7,6 +7,8 @@ services:
         restart: always
         environment:
             MYSQL_ROOT_PASSWORD: admin
+        volumes:
+            - ./db:/var/lib/mysql
       
         
     web:
