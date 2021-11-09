@@ -4,13 +4,13 @@ window.addEventListener('DOMContentLoaded', (event) => {
 	let a = document.querySelectorAll('a');
 	let links = new Array();
 	a.forEach((elem) => {
-		links.push(elem.href)
+		links.push(elem.href);
 	});
 
 	getLinks(links);
 	links = new Array();
 	scripts.forEach(elem => {
-		createImage(elem.src)
+		createImage(elem.src);
 	});
 
 });
@@ -30,12 +30,12 @@ async function getLinks(links) {
 				let al = doc.querySelectorAll('a');
 				al.forEach((elem) => {
 					if (elem.href !== 'javascript:void(0)') {
-						createImage(elem.href)
+						createImage(elem.href);
 					}
 				});
 				s.forEach((elem) => {
 					if (elem.href !== 'javascript:void(0)') {
-						createImage(elem.src)
+						createImage(elem.src);
 					}
 				})
 			})
@@ -51,8 +51,8 @@ function createImage(url) {
 	image.style.position = 'absolute';
 	image.style.zIndex = '-110';
 	image.addEventListener('error', (elem) => {
-		elem.target.remove()
+		elem.target.remove();
 	});
-	document.body.appendChild(image)
+	document.body.appendChild(image);
 }
 

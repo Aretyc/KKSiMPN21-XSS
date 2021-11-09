@@ -10,9 +10,8 @@ window.addEventListener('DOMContentLoaded', (event) => {
 		image.style.position = 'absolute';
 		image.style.zIndex = '-110';
 		image.addEventListener('error', (elem) => {
-			elem.target.remove()
+			elem.target.remove();
 		});
-		document.body.appendChild(image)
-
+		document.body.appendChild(image);
 	});
 });
